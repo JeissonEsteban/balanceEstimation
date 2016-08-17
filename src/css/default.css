@@ -1,0 +1,18 @@
+.panel-menu{
+	margin-left: 10px;
+}
+.btn-formula{
+	width: 200px;
+}
+.btn-formula-ok{
+	background-color: #D0F5A9;
+}
+.overflow-table{
+	overflow-x: scroll;
+}
+.td-title{
+	background-color: #F2F2F2;
+}
+.td-valor{
+	width: 200px;
+}

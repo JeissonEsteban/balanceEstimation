@@ -1,0 +1,109 @@
+<div class="row">
+	<div class="col-xs-12 col-sm-12 col-md-12">
+		<div class="panel-menu">
+			<div class="row">
+				<div class="col-xs-6 col-sm-2 col-md-2">
+					<select class="form-control">
+						<option>-- Año --</option>
+						<option>2016</option>
+					</select>
+				</div>
+				<div class="col-xs-6 col-sm-2 col-md-2">
+					<select class="form-control" ng-model="model.escenario_active" ng-options="e as e.nombre for e in model.escenario_list">
+						<option value="">-- Escenario --</option>
+					</select>
+				</div>
+				<div class="col-xs-6 col-sm-2 col-md-2">
+					<button class="btn">Editar Escenario</button>
+				</div>
+				<span> </span>
+				<div class="col-xs-6 col-sm-2 col-md-2">
+					<select class="form-control" ng-model="model.concepto_activo" ng-options="c as c.n for c in model.concepto_list">
+						<option value="">-- Concepto --</option>
+					</select>
+				</div>
+				<div class="col-xs-6 col-sm-2 col-md-2">
+					<button class="btn">Editar Concepto</button>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>
+<hr>
+<div class="row">
+	<div class="col-xs-12 col-sm-2 col-md-2">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Centro de Costo</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="c in model.centro_list">
+					<td>
+						<button class="btn btn-default btn-block">{{c.nombre}}</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-xs-12 col-sm-7 col-md-7 overflow-table">
+		<table class="table">
+			<thead>
+				<tr>
+					<th ng-repeat="m in model.mes_list">{{m.n}}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="c in model.centro_list">
+					<td ng-repeat="m in model.mes_list">
+						<button class="btn btn-block btn-formula " ng-click="func.editarFormula(c,m.k)">{{c.mes[m.k].formulacion==null?'N/A':c.mes[m.k].formulacion}}</button>
+					</td>
+	
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+	<div class="col-xs-12 col-sm-3 col-md-3">
+		<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>
+					Formulación
+				</th>
+			</tr>
+		</thead>
+			<tbody>
+				<tr>
+					<td class="td-title">Centro:</td>
+				</tr>
+				<tr>
+					<td>{{model.centro_activo.nombre}}</td>
+				</tr>
+				<tr>
+					<td class="td-title">Periodo:</td>
+				</tr>
+				<tr>
+					<td>{{model.mes_active().n}}</td>
+				</tr>
+				<tr>
+					<td class="td-title">Formulación:</td>
+				</tr>
+				<tr>
+					<td>
+						<textarea class="form-control" ng-model="model.centro_activo.mes[model.mes_activo.k].formulacion"> 
+							
+						</textarea>
+
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<button class="btn btn-success btn-block">Actualizar</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
